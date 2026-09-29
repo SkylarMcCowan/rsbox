@@ -8,3 +8,4 @@ data/
 modulus.txt
 jrebel.xml
 *.kt.txt
+.kotlin/

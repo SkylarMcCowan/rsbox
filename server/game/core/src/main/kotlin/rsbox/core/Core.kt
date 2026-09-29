@@ -4,13 +4,19 @@ import io.rsbox.server.engine.model.entity.Player
 import io.rsbox.server.engine.api.ext.on_login
 import io.rsbox.server.engine.api.has_display_name
 import io.rsbox.server.engine.api.varbit
+import io.rsbox.server.script.GameScript
 
-on_login {
-    player.setDisplayName()
-    player.sendGameMessage("Welcome to Old School RuneScape.")
+class Core : GameScript() {
+    init {
+        on_login {
+            player.setDisplayName()
+            player.sendGameMessage("Welcome to Old School RuneScape.")
+        }
+    }
 }
 
 fun Player.setDisplayName() {
+    if (displayName.isBlank()) displayName = username
     val hasDisplayName = displayName.isNotBlank()
     runClientScript(1105, if(hasDisplayName) 1 else 0)
     runClientScript(423, displayName)

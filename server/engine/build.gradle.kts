@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     idea
-    kotlin("plugin.serialization") version "1.9.0"
+    kotlin("plugin.serialization")
 }
 
 dependencies {
@@ -20,5 +20,5 @@ dependencies {
 }
 
 tasks.withType(KotlinCompile::class).all {
-    kotlinOptions.freeCompilerArgs = listOf("-Xcontext-receivers")
+    compilerOptions.freeCompilerArgs.add("-Xcontext-receivers")
 }
